@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Data Science Project</title>
+ <!-- Link to the CSS file in the static folder -->
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+ <div class="container">
+ <h1>Project Title</h1>
+ <p class="subtitle">Enter the details below to get a prediction or
+analysis.</p>
+ <!-- Main Form for Predictions -->
+ <form action="{{ url_for('predict') }}" method="post">
+   <!-- Your input fields here -->
+   <button type="submit" class="btn">Submit</button>
+ </form>
+ <!-- Section to display the result -->
+ {% if prediction_text %}
+ <div class="result">
+   <h2>{{ prediction_text }}</h2>
+ </div>
+ {% endif %}
+
+ <!-- Dashboard Sections: Add below this line -->
+
+ <!-- Top Directors -->
+ <h2>Top 10 Directors</h2>
+ <ul>
+   {% for director, count in directors %}
+     <li>{{ director }}: {{ count }}</li>
+   {% endfor %}
+ </ul>
+
+ <!-- Top Countries -->
+ <h2>Top 10 Countries</h2>
+ <ul>
+   {% for country, count in countries %}
+     <li>{{ country }}: {{ count }}</li>
+   {% endfor %}
+ </ul>
+ <!-- End Dashboard Sections -->
+
+ </div>
+</body>
+</html>
